@@ -40,8 +40,7 @@
         </h1>
         <div class="row">
             <div class="city-card-container col-md">
-                {# <a href="{% url 'property_list' %}?city=Delhi">  #}
-                <a href='#'>
+                <a href="{% url 'restaurant_list' city='Delhi' %}">
                     <div class="city-card rounded-circle">
                         <img src="{% static 'img/delhi.png' %}" class="city-img" />
                     </div>
@@ -49,8 +48,7 @@
             </div>
 
             <div class="city-card-container col-md">
-                {# <a href="{% url 'property_list' %}?city=Mumbai"> #}
-                <a href="#">
+                <a href="{% url 'restaurant_list' city='Mumbai' %}">
                     <div class="city-card rounded-circle">
                         <img src="{% static 'img/mumbai.png' %}" class="city-img" />
                     </div>
@@ -58,8 +56,7 @@
             </div>
 
             <div class="city-card-container col-md">
-                {# <a href="{% url 'property_list' %}?city=Bengaluru"></a> #}
-                <a href="#">
+                <a href="{% url 'restaurant_list' city='Bangolore' %}">
                     <div class="city-card rounded-circle">
                         <img src="{% static 'img/bangalore.png' %}" class="city-img" />
                     </div>
@@ -67,8 +64,7 @@
             </div>
 
             <div class="city-card-container col-md">
-                {# <a href="{% url 'property_list' %}?city=Hyderabad"></a> #}
-                <a href="#">
+                <a href="{% url 'restaurant_list' city='Chennai' %}">
                     <div class="city-card rounded-circle">
                         <img src="{% static 'img/chennai.png' %}" class="city-img" />
                     </div>

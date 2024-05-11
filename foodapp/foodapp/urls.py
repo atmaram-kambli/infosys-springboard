@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('customer.urls')),
     path('', home_views.index, name='index'),
-    path('dashboard/', home_views.dashboard, name='dashboard')
+    path('dashboard/', home_views.dashboard, name='dashboard'),
+    path('<str:city>/', home_views.restaurant_list, name='restaurant_list'),
+    # path('restuarant_list/', home_views.restaurant_list, name='restua_list')
     
 ]
