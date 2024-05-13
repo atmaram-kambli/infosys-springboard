@@ -14,7 +14,7 @@ def login(request):
         userAuth = authenticate(request, email=user.email, password=password)
         auth_login(request, userAuth)
         
-        return render(request,'user/home.html')
+        return render(request,'index.html')
     return render(request,'user/login.html')
 
 def register(request):
