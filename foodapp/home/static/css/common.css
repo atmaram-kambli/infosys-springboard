@@ -1,6 +1,8 @@
 * {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -114,6 +116,7 @@ input[type="radio"] {
 .header {
     background-color: #e3f2fd;
     /* background-color: #ceeff2; */
+    z-index: 100;
     font-size: 13px;
     font-weight: bold;
 }

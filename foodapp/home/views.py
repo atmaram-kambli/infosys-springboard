@@ -14,6 +14,7 @@ def dashboard(request):
 
 
 def restaurant_list(request, city):
+    
     restaurants = Restaurant.objects.filter(city__iexact=city)
     
     context = {
