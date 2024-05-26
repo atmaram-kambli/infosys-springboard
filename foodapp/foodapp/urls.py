@@ -17,12 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from home import views as home_views
+from restuarant import views as restua_views
 # from customer import views as customer_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('customer.urls')),
     path('', home_views.index, name='index'),
-    path('dashboard/', home_views.dashboard, name='dashboard')
-    
+    path('dashboard/', home_views.dashboard, name='dashboard'),
+    path('<str:city>/', home_views.restaurant_list, name='restaurant_list'),
+    # path('restuarant_list/', home_views.restaurant_list, name='restua_list')
+    path('restaurant/<int:restaurant_id>/', restua_views.restaurant_detail, name='restaurant_detail'),
+
 ]
