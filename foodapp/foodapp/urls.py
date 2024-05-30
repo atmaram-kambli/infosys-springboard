@@ -23,10 +23,11 @@ from restuarant import views as restua_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('customer.urls')),
-    path('', home_views.index, name='index'),
-    path('dashboard/', home_views.dashboard, name='dashboard'),
-    path('<str:city>/', home_views.restaurant_list, name='restaurant_list'),
-    # path('restuarant_list/', home_views.restaurant_list, name='restua_list')
-    path('restaurant/<int:restaurant_id>/', restua_views.restaurant_detail, name='restaurant_detail'),
+    path('', include('home.urls')),
+    # path('', home_views.index, name='index'),
+    # path('dashboard/', home_views.dashboard, name='dashboard'),
+    # path('<str:city>/', home_views.restaurant_list, name='restaurant_list'),
+    # # path('restuarant_list/', home_views.restaurant_list, name='restua_list')
+    # path('restaurant/<int:restaurant_id>/', restua_views.restaurant_detail, name='restaurant_detail'),
 
 ]

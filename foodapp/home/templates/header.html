@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="header sticky-top ">
+<div class="header sticky-top">
     <nav class="navbar navbar-expand-md navbar-light">
         <a class="navbar-brand" href="{% url 'index' %}">
             <!-- <img src="{% static 'img/logo.png' %}" /> -->
@@ -12,7 +12,7 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="my-navbar">
             <ul class="navbar-nav">
-                {% if not user_id %}
+                {% if not request.user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'register' %}">
                             <i class="fas fa-user"></i> Signup
@@ -20,25 +20,23 @@
                     </li>
                     <div class="nav-vl"></div>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}"">
+                        <a class="nav-link" href="{% url 'login' %}">
                             <i class="fas fa-sign-in-alt"></i> Login
                         </a>
                     </li>
                 {% else %}
-                    <div class='nav-name'>
-                        <!-- Hi, {{ full_name }} -->
-                        Hi, Hungry man
+                    <div class="nav-name">
+                        Hi, {{ request.user.first_name }}
                     </div>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'dashboard' %}">
-                            <i class="fas fa-user"></i>Dashboard
+                            <i class="fas fa-user"></i> Dashboard
                         </a>
                     </li>
                     <div class="nav-vl"></div>
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="{% url 'logout' %}"> -->
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-sign-out-alt"></i>Logout
+                        <a class="nav-link" href="{% url 'logout' %}">
+                            <i class="fas fa-sign-out-alt"></i> Logout
                         </a>
                     </li>
                 {% endif %}
