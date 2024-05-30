@@ -15,7 +15,7 @@ def restaurant_detail(request, restaurant_id):
         'image_urls': image_urls,
         'food_items': food_items
     }
-    for item in food_items:
-        print(item.name)
+    # for item in food_items:
+    #     print(item.name)
 
     return render(request, 'restaurant_detail.html', context)

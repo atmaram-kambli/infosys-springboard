@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container cart-container">
+        <h1>My Cart</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Food Name</th>
+                    <th>Restaurant</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.food_item.name }}</td>
+                    <td>{{ item.food_item.restaurant.name }}</td>
+                    <td>₹{{ item.food_item.price }}</td>
+                    <td>
+                        <button class="quantity-btn">-</button>
+                        <input type="text" value="{{ item.quantity }}" class="quantity-input">
+                        <button class="quantity-btn">+</button>
+                    </td>
+                    <td><button class="delete-btn">Delete</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="cart-footer">
+            <p>Total Price: ₹{{ total_price }}</p>
+            <a href="{% url 'payment' %}">
+                <button class="checkout-btn">Proceed to Payment</button></a>
+        </div>
+    </div>
+    
+    {% include 'footer.html' %}
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
