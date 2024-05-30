@@ -1,5 +1,5 @@
 {% extends "user/base.html" %}
-{%block content%}
+{% block content %}
 <style>
     body {
         background-color: #90AEAD;
@@ -32,21 +32,18 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="email" class="form-control border-secondary" id="email" name="email" placeholder="Enter email">
+                        <input type="email" class="form-control border-secondary" id="email" name="email" placeholder="Enter email" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control border-secondary" name="password" id="password"
-                            placeholder="Password">
-
+                        <input type="password" class="form-control border-secondary" name="password" id="password" placeholder="Password" required>
                     </div>
-                    <button type=" submit" class="btn btn-primary btn-block">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </form>
-                    <div class="signup-link text-center mt-3">
-                        <p>New user? <a href={% url "register" %}>Signup here</a></p>
-                    </div>
+                <div class="signup-link text-center mt-3">
+                    <p>New user? <a href="{% url 'register' %}">Signup here</a></p>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-{%endblock content%}
+{% endblock content %}

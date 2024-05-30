@@ -41,13 +41,13 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="https://source.unsplash.com/random/?ice-cream" alt="Third slide">
+            <img class="d-block w-100" src="{% static 'img/restua1.webp' %}" alt="Third slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://source.unsplash.com/random/?restaurants/food" alt="Second slide">
+            <img class="d-block w-100" src="{% static 'img/restua2.jpg' %}" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://source.unsplash.com/random/?restaurants" alt="First slide">
+            <img class="d-block w-100" src="{% static 'img/restua1.webp' %}" alt="First slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -94,15 +94,15 @@
       {% for item in food_items %}
           <div class="col-md-4 d-flex align-items-stretch">
               <div class="card">
-                  <!-- <img class="card-img-top" src="{% static 'img/image.png' %}" alt="{{ item.name }}"> -->
-                  <img class="card-img-top" src="https://source.unsplash.com/random/?pizaa" alt="{{ item.name }}">
+                  <img class="card-img-top" src="{% static 'img/image.png' %}" alt="{{ item.name }}">
+                  <!-- <img class="card-img-top" src="https://source.unsplash.com/random/?pizaa" alt="{{ item.name }}"> -->
                   <div class="card-body">
                       <h5 class="card-title">{{ item.name }}</h5>
                       <p class="card-text">{{ item.description }}</p>
                       <div class="d-flex justify-content-between row no-gutters">
                         <p class="card-text price col-6">₹{{ item.price }}</p>
                         <div class="button-container col-6">
-                          <a href="#" class="btn btn-primary ">Order Now</a>
+                          <a href="#" class="btn btn-primary ">Add to Cart</a>
                       </div>
                       </div>
                       
