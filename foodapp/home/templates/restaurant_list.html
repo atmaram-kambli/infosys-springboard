@@ -22,8 +22,8 @@
             <li class="breadcrumb-item">
                 <a href="{% url 'index' %}">Home</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                {{ city_name }}
+            <li class="breadcrumb-item">
+                <a href="{% url 'restaurant_list' city %}">{{ city }}</a>
             </li>
         </ol>
     </nav>
@@ -55,8 +55,6 @@
         </div>
         {% endfor %}
     </div>
-
-    <!-- Filter modal can be added here if needed -->
 
     {% include 'footer.html' %}
 </body>

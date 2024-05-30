@@ -91,25 +91,24 @@
 <div class="restaurant-food-items page-container-property" id="food-items-container">
   <h2>Food Items</h2>
   <div class="row">
-      {% for item in food_items %}
-          <div class="col-md-4 d-flex align-items-stretch">
-              <div class="card">
-                  <img class="card-img-top" src="{% static 'img/image.png' %}" alt="{{ item.name }}">
-                  <!-- <img class="card-img-top" src="https://source.unsplash.com/random/?pizaa" alt="{{ item.name }}"> -->
-                  <div class="card-body">
-                      <h5 class="card-title">{{ item.name }}</h5>
-                      <p class="card-text">{{ item.description }}</p>
-                      <div class="d-flex justify-content-between row no-gutters">
-                        <p class="card-text price col-6">₹{{ item.price }}</p>
-                        <div class="button-container col-6">
-                          <a href="#" class="btn btn-primary ">Add to Cart</a>
-                      </div>
-                      </div>
-                      
-                  </div>
-              </div>
-          </div>
-      {% endfor %}
+    {% for item in food_items %}
+    <div class="col-md-4 d-flex align-items-stretch">
+      <div class="card">
+        <!-- <img class="card-img-top" src="{{ item.image.url }}" alt="{{ item.name }}"> -->
+        <img class="card-img-top" src="{% static 'img/image.png' %}" alt="{{ item.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <p class="card-text">{{ item.description }}</p>
+                <div class="d-flex justify-content-between row no-gutters">
+                    <p class="card-text price col-6">₹{{ item.price }}</p>
+                    <div class="button-container col-6">
+                        <a href="{% url 'add_to_cart' item.id %}" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
   </div>
 </div>
 </div>
