@@ -4,10 +4,8 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserForm
-
 from .models import Cart, CartItem
 from restuarant.models import FoodItem
-
 from django.contrib.auth.models import User
 
 def register(request):
@@ -41,10 +39,17 @@ def logout(request):
     auth_logout(request)
     return redirect('login')
 
+
 @login_required
 def payment(request):
-    return render(request, 'user/payment.html')
-
+    cart, created = Cart.objects.get_or_create(user=request.user, is_active=True)
+    cart_items = cart.items.all()
+    total_price = sum(item.get_total_price() for item in cart_items)
+    return render(request, 'user/payment.html', {
+        'cart_items': cart_items,
+        'total_price': total_price,
+        'user': request.user,
+    })
 
 @login_required
 def cart_view(request):
@@ -84,3 +89,21 @@ def delete_cart_item(request):
         cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
         cart_item.delete()
         return JsonResponse({'status': 'success'})
+
+
+@login_required
+def successful_payment(request):
+
+    cart, created = Cart.objects.get_or_create(user=request.user, is_active=True)
+    cart_items = cart.items.all()
+    total_price = sum(item.get_total_price() for item in cart_items)
+
+    cart.is_active = False
+    cart.save()
+
+    context = {
+        'user': request.user,
+        'order_number': '12345678',  
+        'total_price': total_price,
+    }
+    return render(request, 'user/successful_payment.html', context)

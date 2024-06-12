@@ -12,26 +12,27 @@
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="successful.html" method="POST">
+      <form action="{% url 'successful_payment' %}" method="POST">
+        {% csrf_token %}
         <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Faraz" required>
+            <input type="text" id="fname" name="firstname" placeholder="{{ user.get_full_name }}" required>
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="email" id="email" name="email" placeholder="codewithfaraz@example.com" required>
+            <input type="email" id="email" name="email" placeholder="{{ user.email }}" required>
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="Mira Bhayandar Road" required>
+            <input type="text" id="adr" name="address" placeholder="Your address" required>
             <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="Mumbai" required>
+            <input type="text" id="city" name="city" placeholder="Your city" required>
             <div class="row">
               <div class="col-50">
                 <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="MH" required>
+                <input type="text" id="state" name="state" placeholder="Your state" required>
               </div>
               <div class="col-50">
                 <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="400001" required>
+                <input type="text" id="zip" name="zip" placeholder="Your zip code" required>
               </div>
             </div>
           </div>
@@ -45,7 +46,7 @@
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
             <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="Faraz" required>
+            <input type="text" id="cname" name="cardname" placeholder="Name on card" required>
             <label for="ccnum">Credit card number</label>
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
             <label for="expmonth">Exp Month</label>
@@ -69,7 +70,16 @@
       </form>
     </div>
   </div>
-  
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{ cart_items|length }}</b></span></h4>
+      {% for item in cart_items %}
+      <p><a href="#">{{ item.food_item.name }}</a> <span class="price">₹{{ item.food_item.price }} x {{ item.quantity }}</span></p>
+      {% endfor %}
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>₹{{ total_price }}</b></span></p>
+    </div>
+  </div>
 </div>
 </body>
 </html>
