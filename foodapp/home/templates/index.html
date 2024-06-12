@@ -14,7 +14,7 @@
     {% include 'header.html' %}
     <div class="banner-container">
         <h2 class="white pb-3">Delicious Delights: Easy Ordering, Delicious Food!</h2>
-        <form id="search-form" action="{% url 'restaurant_list' %}" method="GET">
+        <form id="search-form" method="GET">
             <div class="input-group city-search">
                 <input type="text" class="form-control input-city" id="city" name="city" placeholder="Enter your city to search for restaurants" />
                 <div class="input-group-append">
@@ -61,5 +61,15 @@
         </div>
     </div>
     {% include 'footer.html' %}
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var city = document.getElementById('city').value.trim();
+            if (city) {
+                var url = '{% url "restaurant_list" "placeholder_city" %}'.replace('placeholder_city', encodeURIComponent(city));
+                window.location.href = url;
+            }
+        });
+    </script>
 </body>
 </html>
